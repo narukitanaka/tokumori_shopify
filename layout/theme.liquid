@@ -410,6 +410,12 @@
 
     {% if template.name == 'cart' or template.name == 'search' or template.name == 'account' or template.name == 'addresses' or template.name == 'login' or template.name == 'order' or template.name == 'register' %}
       {{ 'base.css' | asset_url | stylesheet_tag }}
+      {% style %}
+        main {
+          padding: 100px 0 250px;
+          background-color: #fffbf5;
+        }
+      {% endstyle %}
     {% endif %}
     {% comment %} {{ 'base.css' | asset_url | stylesheet_tag }} {% endcomment %}
     {{ 'style.css' | asset_url | stylesheet_tag }}

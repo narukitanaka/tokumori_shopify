@@ -114,7 +114,8 @@ body:has(.section-header .drawer-menu) .announcement-bar-section slideshow-compo
 
 @media screen and (min-width: 750px) {
   .page-width {
-    padding: 0 5rem;
+    /* padding: 0 5rem; */
+    max-width: 1080px;
   }
 
   .header.page-width {
@@ -1882,6 +1883,7 @@ input[type='checkbox'] {
   display: flex;
   border-radius: var(--inputs-radius);
   min-height: calc((var(--inputs-border-width) * 2) + 4.5rem);
+  background-color: #fff;
 }
 
 .quantity:after {

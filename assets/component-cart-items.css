@@ -17,6 +17,7 @@
 
 .cart-item__totals {
   position: relative;
+  width: 10%;
 }
 
 .cart-items *.right {
