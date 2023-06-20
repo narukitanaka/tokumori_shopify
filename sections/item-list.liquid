@@ -1,0 +1,104 @@
+<!-- パンくずリスト -->
+<div class="breadcrumb">
+  <div class="inner">
+    <nav>
+      <ol>
+        <li>
+          <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-home.svg" alt="">TOP</a>
+        </li>
+        <li>くがに卵</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<!-- メインビジュアル -->
+<div class="p-underhead-img">
+  <picture>
+    <source srcset="{{ collection.metafields.custom._head-img_sp | img_url: 'master' }}" media="(max-width: 769px)">
+    <img src="{{ collection | img_url: 'master' }}" alt="">
+  </picture>
+  <div class="head_ttl">
+    <p>
+      {{ collection.metafields.custom._subtitle }}
+    </p>
+    <h2>{{ collection.title }}</h2>
+  </div>
+</div>
+<!-- /.top_mv_wrap -->
+
+<div id="contents">
+  <section class="p-collection_wrap">
+    <div class="inner">
+
+      {% if cart.attributes.pagination != blank %}
+        {%- assign limit = cart.attributes.pagination %}
+      {% else %}
+        {% assign limit = 16 -%}
+      {% endif %}
+      {% paginate collection.products by limit %}
+
+        <!-- 並び順 -->
+        <p class="u-sp order-ttl_sp">並び順：</p>
+        <div class="p-order-content">
+          <p class="u-pc">全{{ paginate.items }}件</p>
+          <ul>
+            <li class="u-pc">並び順：</li>
+            <li>
+              <a href="{{ product.url }}?sort_by=best-selling" data-sort-by="best-selling">おすすめ順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=created-descending " data-sort-by="created-descending">新着順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=price-ascending" data-sort-by="price-ascending">価格が安い順</a>
+            </li>
+            <li>
+              <a href="{{ product.url }}?sort_by=price-descending" data-sort-by="price-descending">価格が高い順</a>
+            </li>
+          </ul>
+        </div>
+        <p class="u-sp all-count_sp">全{{ paginate.items }}件</p>
+
+        <div class="item-list_area">
+          <ul>
+            {% for product in collection.products %}
+              <li class="item-box">
+                <a href="{{ product.url }}">
+                  <div class="img-box"><img
+                      class="is_ObjectFit"
+                      src="{{ product.featured_image.src | img_url: 'master' }}"
+                      alt=""></div>
+                  <p>{{ product.title }}</p>
+                  <p>{{ product.price | money }}</p>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <!-- ページネーション -->
+        {% if paginate.pages > 1 %}
+          {% render "pagination", paginate: paginate %}
+        {% endif %}
+      {% endpaginate %}
+
+      <div class="kazari01"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/contents_bg01.svg" alt=""></div>
+      <div class="kazari02"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/contents_bg01.svg" alt=""></div>
+    </div>
+    <!-- /.inner -->
+  </section>
+  <!-- /.p-company_wrap -->
+</div>
+<!-- /#contents-->
+
+
+{% schema %}
+  {
+    "name": "item-list",
+    "presets": [
+      {
+        "name": "item-list"
+      }
+    ]
+  }
+{% endschema %}

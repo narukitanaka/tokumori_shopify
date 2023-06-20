@@ -2,12 +2,12 @@
   <div class="inner">
     <div class="footer_left">
       <div class="logo">
-        <a href="index.html"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/logo_img.png" alt=""></a>
+        <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/logo_img.png" alt=""></a>
       </div>
       <p class="u-pc">
         株式会社 徳森養鶏場<br>
         904-2307 沖縄県うるま市与那城饒辺807-3<br>
-        <a href="#">GoogleMapで見る</a><br>
+        <a href="https://goo.gl/maps/1im43PMvrLpPJG8S8" target="_blank">GoogleMapで見る</a><br>
         TEL: 090-1945-0263/FAX:098-978-3031<br>
         nywoku@gmail.com
       </p>
@@ -21,24 +21,11 @@
     <div class="footer_center">
       <nav>
         <ul class="footer_main-nav">
-          <li>
-            <a href="#">トップページ</a>
-          </li>
-          <li>
-            <a href="#">たまご王国について</a>
-          </li>
-          <li>
-            <a href="#">ノーマンブラザーズ</a>
-          </li>
-          <li>
-            <a href="company.html">会社概要</a>
-          </li>
-          <li>
-            <a href="#">問い合わせ</a>
-          </li>
-          <li>
-            <a href="#">よくある質問</a>
-          </li>
+          {% for link in linklists.footer.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
           <li class="item-category">
             商品一覧
             <ul>
@@ -68,7 +55,7 @@
       <p class="address u-sp">
         株式会社 徳森養鶏場<br>
         904-2307 沖縄県うるま市与那城饒辺807-3<br>
-        <a href="#">GoogleMapで見る</a><br>
+        <a href="https://goo.gl/maps/1im43PMvrLpPJG8S8" target="_blank">GoogleMapで見る</a><br>
         TEL: 090-1945-0263/FAX:098-978-3031<br>
         nywoku@gmail.com
       </p>

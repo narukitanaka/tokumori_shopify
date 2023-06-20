@@ -2214,9 +2214,7 @@ top
   width: 447px;
   border-radius: 30px;
   text-align: center;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.3s;
+  overflow: hidden;
 }
 @media screen and (max-width: 769px) {
   .top-underlink_wrap .inner .link-box {
@@ -2225,16 +2223,21 @@ top
     margin-bottom: 30px;
   }
 }
-.top-underlink_wrap .inner .link-box:hover {
-  background-size: 120%;
+.top-underlink_wrap .inner .link-box a {
+  background-size: cover;
+  background-position: center;
+  transition: all 0.5s;
+}
+.top-underlink_wrap .inner .link-box a:hover {
+  transform: scale(1.1);
 }
 .top-underlink_wrap .inner .link-box:hover a {
   opacity: 1;
 }
-.top-underlink_wrap .inner .link-box:first-of-type {
+.top-underlink_wrap .inner .link-box:first-of-type a {
   background-image: url(https://cdn.shopify.com/s/files/1/0782/1698/6936/files/top_q_a-img01.png);
 }
-.top-underlink_wrap .inner .link-box:nth-of-type(2) {
+.top-underlink_wrap .inner .link-box:nth-of-type(2) a {
   background-image: url(https://cdn.shopify.com/s/files/1/0782/1698/6936/files/top_company-img01.png);
 }
 @media screen and (max-width: 769px) {
@@ -2597,18 +2600,22 @@ company
   }
 }
 
-.p-pager__link {
-  width: 34px;
-  height: 42px;
-  font-size: 16px;
-  display: grid;
-  place-content: center;
+.pagination__item {
+  width: 34px !important;
+  height: 42px !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  display: grid !important;
+  place-content: center !important;
 }
 
-.p-pager__link--current {
+.pagination__item--current {
   background-image: url(https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-egg01.svg);
   background-size: cover;
-  color: #fff;
+  color: #fff !important;
+}
+.pagination__item--current::after {
+  display: none !important;
 }
 
 /*************************************************

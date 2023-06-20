@@ -74,7 +74,7 @@ $(function () {
     }
   });
 
-  // 無限スライダー
+  // トップ無限スライダー
   const swiper = new Swiper(".swiper", {
     autoplay: {
       delay: 0,

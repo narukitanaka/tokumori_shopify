@@ -1,7 +1,11 @@
+{% if template.name == 'index' %}
 <header class="scroll-header">
+{% else %}
+<header class="header-active">
+{% endif %}
   <div class="header_inner">
     <div class="logo01">
-      <a href="index.html">
+      <a href="{{ routes.root_url }}">
         <h1><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/logo_img.png" alt="特盛養鶏場 | たまご王国"></h1>
       </a>
     </div>
@@ -55,13 +59,13 @@
       <ul class="main-nav-list">
         <p class="ttl">商品一覧</p>
         <li>
-          <a href="#">
+          <a href="/collections/brandedeggs">
             <p>くがに卵</p>
             <p>BRANDED EGGS</p>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="/collections/sweets">
             <p>卵菓子</p>
             <p>SWEETS</p>
           </a>
@@ -77,21 +81,11 @@
       </div>
       <ul class="sub-nav-list">
         <div class="sp-list">
-          <li>
-            <a href="company.html">会社概要</a>
-          </li>
-          <li>
-            <a href="#">よくあるご質問</a>
-          </li>
-          <li>
-            <a href="#">お問い合わせ</a>
-          </li>
-          <li>
-            <a href="#">特定商取引法に基づく表記</a>
-          </li>
-          <li>
-            <a href="#">プライバシーポリシー</a>
-          </li>
+          {% for link in linklists.main-menu.links %}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
         </div>
         <li>
           <a href="https://www.instagram.com/tokumoriyoukeijyou/?hl=ja" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-insta.svg" alt=""></a>

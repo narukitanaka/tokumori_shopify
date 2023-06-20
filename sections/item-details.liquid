@@ -1,0 +1,139 @@
+<!-- パンくずリスト -->
+<div class="breadcrumb">
+  <div class="inner">
+    <nav>
+      <ol>
+        <li>
+          <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-home.svg" alt="">TOP</a>
+        </li>
+        {% for collection in product.collections %}
+          {% assign excluded_collections = 'all' | split: ',' %}
+          {% unless excluded_collections contains collection.handle %}
+            <li>
+              <a href="{{ collection.url }}">{{ collection.title }}</a>
+            </li>
+          {% endunless %}
+        {% endfor %}
+        <li>{{ product.title }}</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<div id="contents">
+  <section class="p-item-detail_wrap">
+    <div class="inner">
+      <div class="p-merchandise-detail">
+        <div class="p-merchandise__img-content">
+          <div class="p-merchandise__img-wrapper">
+            <div class="swiper03">
+              <div class="swiper-wrapper">
+                {% for image in product.images %}
+                  <div class="swiper-slide">
+                    <div class="p-img-wrapper">
+                      <img src="{{ image.src | img_url: 'master' }}" alt="">
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+              <!-- /.swiper-wrapper -->
+            </div>
+            <!-- /.swiper03 -->
+            <div class="thumb-list">
+              {% for image in product.images %}
+                <div class="thumb-item">
+                  <a
+                    class="thumb-link"
+                    href="javascript:void(0);"
+                    onclick="thumbnail({{ forloop.index }})">
+                    <img src="{{ image.src | img_url: 'master' }}" alt="">
+                  </a>
+                </div>
+              {%- endfor -%}
+            </div>
+            <!-- /.thumb-list -->
+          </div>
+          <!-- /.p-merchandise__img-wrapper -->
+        </div>
+        <!-- /.left -->
+        <div class="p-merchandise__detail-content">
+          {% assign current_variant = product.selected_or_first_available_variant %}
+          <p class="c-code">商品コード：{{ current_variant.sku }}</p>
+          <p class="c-merchandise__name">{{ product.title }}</p>
+          <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
+          </p>
+          <p class="p-block__tex">
+            {{ product.content }}
+          </p>
+          <table class="p-merchandise__infomation">
+            <tr>
+              {% if product.metafields.custom._capacity != empty %}
+                <th>内容量</th>
+                <td>{{ product.metafields.custom._capacity }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._bestbefore != empty %}
+                <th>賞味期限</th>
+                <td>{{ product.metafields.custom._bestbefore }}</td>
+              {% endif %}
+            </tr>
+            <tr>
+              {% if product.metafields.custom._keep != empty %}
+                <th>保存方法</th>
+                <td>{{ product.metafields.custom._keep }}</td>
+              {% endif %}
+            </tr>
+          </table>
+          <div class="p-count">
+            <form
+              method="post"
+              action="/cart/add"
+              id="AddToCartForm">
+              <input
+                type="hidden"
+                name="id"
+                value="{{ product.variants[0].id }}" />
+              <div class="product-quantity_wrapper">
+                <p class="c-ttl">数量</p>
+                <div class="product-quantity">
+                  <button type="button" id="minus">ー</button>
+                  <input
+                    type="number"
+                    id="quantity"
+                    name="quantity"
+                    min="1"
+                    value="1">
+                  <button type="button" id="plus">＋</button>
+                </div>
+              </div>
+              <div class="p-btn-wrapper">
+                <button type="submit" class="c-btn">カートに入れる</button>
+              </div>
+            </form>
+          </div>
+          <div class="c-txt-inquiry">
+            <a href="#">この商品について問い合わせる</a>
+          </div>
+        </div>
+      </div>
+      <div class="kazari01"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/contents_bg01.svg" alt=""></div>
+      <div class="kazari02"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/contents_bg01.svg" alt=""></div>
+    </div>
+    <!-- /.inner -->
+  </section>
+  <!-- /.p-item-detail_wrap -->
+</div>
+<!-- /#contents-->
+
+
+{% schema %}
+  {
+    "name": "item-detail",
+    "presets": [
+      {
+        "name": "item-detail"
+      }
+    ]
+  }
+{% endschema %}
