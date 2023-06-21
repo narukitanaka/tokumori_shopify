@@ -17,7 +17,7 @@
 
 .cart-item__totals {
   position: relative;
-  width: 10%;
+  width: 12%;
 }
 
 .cart-items *.right {
@@ -225,6 +225,7 @@ cart-remove-button .icon-remove {
     display: grid;
     grid-template: repeat(2, auto) / repeat(4, 1fr);
     gap: 1.5rem;
+    column-gap: 0.8rem;
     margin-bottom: 3.5rem;
   }
 
@@ -245,13 +246,14 @@ cart-remove-button .icon-remove {
   }
 
   .cart-item__quantity-wrapper {
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
   }
 
   .cart-item__totals {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
+    width: auto;
   }
 }
 

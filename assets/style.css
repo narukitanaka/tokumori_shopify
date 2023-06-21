@@ -1820,6 +1820,7 @@ top
   font-family: "platelet", sans-serif;
   font-size: 3.5rem;
   font-weight: 700;
+  color: #333 !important;
 }
 @media screen and (max-width: 769px) {
   .top-concept_wrap .inner button a {
@@ -2990,6 +2991,11 @@ company
 .p-merchandise__detail-content .p-merchandise__infomation tr {
   position: relative;
 }
+@media screen and (max-width: 769px) {
+  .p-merchandise__detail-content .p-merchandise__infomation tr {
+    border-bottom: 3px dotted #F39800;
+  }
+}
 .p-merchandise__detail-content .p-merchandise__infomation tr::after {
   content: "";
   display: block;
@@ -2999,6 +3005,11 @@ company
   bottom: 0;
   left:0;
   border-bottom: 3px dotted #F39800;
+}
+@media screen and (max-width: 769px) {
+  .p-merchandise__detail-content .p-merchandise__infomation tr::after {
+    display: none;
+  }
 }
 .p-merchandise__detail-content .p-merchandise__infomation th {
   width: 15%;
