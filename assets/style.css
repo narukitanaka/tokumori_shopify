@@ -1787,6 +1787,7 @@ top
   text-align: center;
   letter-spacing: 6px;
   margin-bottom: 40px;
+  font-weight: 600;
 }
 @media screen and (max-width: 769px) {
   .top-concept_wrap .inner h2 {
@@ -1796,17 +1797,19 @@ top
   }
 }
 .top-concept_wrap .inner p {
-  width: 560px;
+  width: 620px;
   margin: 0 auto;
   line-height: 2.5;
   font-weight: 500;
   margin-bottom: 90px;
+  text-align: center;
 }
 @media screen and (max-width: 769px) {
   .top-concept_wrap .inner p {
     width: 100%;
     line-height: 2.2;
     margin-bottom: 30px;
+    text-align: left;
   }
 }
 .top-concept_wrap .inner button {
@@ -2394,7 +2397,7 @@ company
   }
 }
 .p-company_wrap .profile-area table {
-  width: 785px;
+  width: 865px;
   margin: 0 auto;
   border-collapse: separate;
   border-spacing: 30px 0;
@@ -2501,6 +2504,16 @@ company
     letter-spacing: 4px;
   }
 }
+.p-underhead-img .head_ttl p br {
+  content: "";
+  display: block;
+  margin-top: -23px;
+}
+@media screen and (max-width: 769px) {
+  .p-underhead-img .head_ttl p br {
+    margin-top: -15px;
+  }
+}
 .p-underhead-img .head_ttl h2 {
   font-size: 25px;
   font-weight: 600;
@@ -2510,23 +2523,34 @@ company
     font-size: 20px;
   }
 }
-.p-underhead-img::before {
+
+.p-underhead-img .head_ttl_object-circle {
   position: absolute;
   top: 31%;
   left: 50%;
   transform: translateX(-50%);
-  content: "";
   width: 214px;
   height: 214px;
   background-image: url(https://cdn.shopify.com/s/files/1/0782/1698/6936/files/ttl_circle.svg);
   background-size: cover;
 }
 @media screen and (max-width: 769px) {
-  .p-underhead-img::before {
+  .p-underhead-img .head_ttl_object-circle {
     top: 42%;
     width: 130px;
     height: 130px;
   }
+}
+.p-underhead-img .head_ttl_object-circle .head_ttl_position {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.p-underhead-img .head_ttl_object-circle .head_ttl_position .head_ttl {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
 }
 
 .breadcrumb {

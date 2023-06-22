@@ -6,22 +6,39 @@
         <li>
           <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-home.svg" alt="">TOP</a>
         </li>
-        <li>くがに卵</li>
+        <li>{{ collection.title }}</li>
       </ol>
     </nav>
   </div>
 </div>
 <!-- メインビジュアル -->
-<div class="p-underhead-img">
-  <picture>
+{% comment %} <div class="p-underhead-img">
+<picture>
+<source srcset="{{ collection.metafields.custom._head-img_sp | img_url: 'master' }}" media="(max-width: 769px)">
+<img src="{{ collection | img_url: 'master' }}" alt="">
+</picture>
+<div class="head_ttl">
+<p>
+{{ collection.metafields.custom._subtitle }}
+</p>
+<h2>{{ collection.title }}</h2>
+</div>
+</div> {% endcomment %}<!-- /.top_mv_wrap -->
+
+<!-- メインビジュアル -->
+  <div class="p-underhead-img"> <picture>
     <source srcset="{{ collection.metafields.custom._head-img_sp | img_url: 'master' }}" media="(max-width: 769px)">
     <img src="{{ collection | img_url: 'master' }}" alt="">
   </picture>
-  <div class="head_ttl">
-    <p>
-      {{ collection.metafields.custom._subtitle }}
-    </p>
-    <h2>{{ collection.title }}</h2>
+  <div class="head_ttl_object-circle">
+    <div class="head_ttl_position">
+      <div class="head_ttl">
+        <p>
+          {{ collection.metafields.custom._subtitle }}
+        </p>
+        <h2>{{ collection.title }}</h2>
+      </div>
+    </div>
   </div>
 </div>
 <!-- /.top_mv_wrap -->
