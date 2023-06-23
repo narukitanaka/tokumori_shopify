@@ -7,7 +7,7 @@
           <a href="{{ routes.root_url }}"><img src="https://cdn.shopify.com/s/files/1/0782/1698/6936/files/icon-home.svg" alt="">TOP</a>
         </li>
         {% for collection in product.collections %}
-          {% assign excluded_collections = 'all' | split: ',' %}
+          {% assign excluded_collections = 'frontpage' | split: ',' %}
           {% unless excluded_collections contains collection.handle %}
             <li>
               <a href="{{ collection.url }}">{{ collection.title }}</a>
@@ -60,8 +60,17 @@
           {% assign current_variant = product.selected_or_first_available_variant %}
           <p class="c-code">商品コード：{{ current_variant.sku }}</p>
           <p class="c-merchandise__name">{{ product.title }}</p>
-          <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
-          </p>
+          {% if product.compare_at_price_max and product.compare_at_price_max > product.price %}
+            <p class="c-price">{{ product.compare_at_price_max | money_with_currency }}<span>（税込）</span>
+            </p>
+            <p class="c-price" style="color: #f00;">割引価格：{{ product.price | money_with_currency }}<span>（税込）</span>
+            </p>
+          {% else %}
+            <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
+            </p>
+          {% endif %}
+          {% comment %} <p class="c-price">{{ product.price | money_with_currency }}<span>（税込）</span>
+          </p> {% endcomment %}
           <p class="p-block__tex">
             {{ product.content }}
           </p>
